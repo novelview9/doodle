@@ -2,3 +2,10 @@
 .env
 .autoenv
 
+# mac
+.DS_Store
+
+# python
+*.pyc
+*/.ipynb_checkpoints
+*.ipynb
