@@ -12,3 +12,6 @@
 
 # md file
 /output_md
+
+# lint
+.flake8

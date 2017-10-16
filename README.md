@@ -29,9 +29,9 @@ example
 
 ```
 # bear exporter
-[bear](http://www.bear-writer.com/) is markdown like wrking app with tags for crafting notes and prose.
+[bear](http://www.bear-writer.com/) is markdown like writing app with tags for crafting notes and prose.
 bear exporter can dump out md file with days
-### require
+### env settings
 - env settings
   - PROJECT_ROOT_PATH
   - └ set project root, and bear exporter save md file on {PROJECT_ROOT_PATH}/output_md/*.md)

@@ -5,6 +5,7 @@ import errno
 import sqlite3
 import datetime
 
+
 # bear 시간 초기화
 def set_time(for_days):
     local_time_set = time.localtime().tm_gmtoff
@@ -15,12 +16,14 @@ def set_time(for_days):
     query_time_node = node_day.timestamp()
     return query_time_node, time_gap
 
+
 # 가져온 데이터 딕셔너리 생성
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
         d[col[0]] = row[idx]
     return d
+
 
 # 쿼리문 실행
 def sqlite_io(sql_query):
@@ -31,7 +34,6 @@ def sqlite_io(sql_query):
     c.execute(sql_query)
     dataset = c.fetchall()
     return dataset
-
 
 
 if __name__ == '__main__':
@@ -59,7 +61,6 @@ if __name__ == '__main__':
     dataset = sqlite_io(sql_query)
     if not dataset:
         raise "해당 기간 기록이 없습니다."
-
 
     for data in dataset:
         title = data.get('ZTITLE')
