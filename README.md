@@ -34,12 +34,17 @@ bear exporter can dump out md file with days
 ### require
 - env settings
   - PROJECT_ROOT_PATH
+  - └ set project root, and bear exporter save md file on {PROJECT_ROOT_PATH}/output_md/*.md)
   - BEAR_DB_PATH
+  - └ default is /Users/{username}/Library/Containers/net.shinyfrog.bear/Data/Documents/Application Data/databse.sqlite
+
 ```
 python ./bear_exporter/bear_exporter.py {days}
 or
 ./md_out.sh {days}
 
+# days default is 1, below command exporting from 1days ago to now
+./md_out.sh
 #exameple of exporting bear md from 7days ago to now
 ./md_out.sh 7
 
