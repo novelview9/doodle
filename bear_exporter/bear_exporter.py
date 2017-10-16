@@ -6,12 +6,7 @@ import sqlite3
 import datetime
 
 # bear 시간 초기화
-def set_time():
-    try:
-        for_days = sys.argv[1]
-        for_days = int(for_days)
-    except:
-        for_days = 1
+def set_time(for_days):
     local_time_set = time.localtime().tm_gmtoff
     base_time = datetime.datetime.fromtimestamp(0) - datetime.timedelta(seconds=local_time_set)
     time_gap = datetime.datetime(2001, 1, 1, 0, 0, 0) - base_time
@@ -42,7 +37,15 @@ def sqlite_io(sql_query):
 if __name__ == '__main__':
 
     project_root_path = os.environ.get('PROJECT_ROOT_PATH')
-    output_path = os.path.join(project_root_path, 'output_md')
+    save_path = 'output_md'
+    try:
+        for_days = sys.argv[1]
+        for_days = int(for_days)
+    except:
+        for_days = 1
+        save_path = datetime.datetime.now().strftime('%Y%m%d')
+
+    output_path = os.path.join(project_root_path, save_path)
 
     try:
         os.makedirs(output_path)
@@ -50,7 +53,7 @@ if __name__ == '__main__':
         if e.errno != errno.EEXIST:
             raise
 
-    query_time_node, time_gap = set_time()
+    query_time_node, time_gap = set_time(for_days)
 
     sql_query = 'SELECT ZCREATIONDATE, ZMODIFICATIONDATE, ZTITLE, ZSUBTITLE, ZTEXT FROM ZSFNOTE WHERE ZCREATIONDATE > {}'.format(query_time_node)
     dataset = sqlite_io(sql_query)
