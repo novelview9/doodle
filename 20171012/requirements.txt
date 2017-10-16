@@ -1,2 +1,0 @@
-ipython[all]
-peewee==2.10.2 # python orm lib (simpler than sqlalchemy)
