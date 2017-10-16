@@ -9,3 +9,6 @@
 *.pyc
 */.ipynb_checkpoints
 *.ipynb
+
+# md file
+/output_md
