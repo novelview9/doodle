@@ -1,2 +1,4 @@
 ipython[all]
 python-dotenv
+pytest
+
